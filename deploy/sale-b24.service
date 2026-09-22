@@ -1,0 +1,15 @@
+[Unit]
+Description=Bitrix24 to MAX lead notifier
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/sale_b24
+EnvironmentFile=/opt/sale_b24/.env
+ExecStart=/opt/sale_b24/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
